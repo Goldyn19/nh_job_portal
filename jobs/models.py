@@ -10,9 +10,11 @@ class Job(models.Model):
     description = models.TextField()
     location = models.TextField(max_length=225)
     category = models.CharField(max_length=70)
-    salary = models.CharField(max_length=25)
+    min_salary = models.IntegerField()
+    max_salary = models.IntegerField()
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    company_url = models.URLField()
 
     def __str__(self):
         return self.title
