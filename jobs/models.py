@@ -23,5 +23,5 @@ class Job(models.Model):
 
 class Application(models.Model):
     job = models.ForeignKey(Job, on_delete=models.CASCADE, related_name="applications")
-    seeker_id = models.ForeignKey()
+    seeker_id = models.ForeignKey(User, on_delete=models.CASCADE)
     applied_at = models.DateTimeField(auto_now_add=True)
