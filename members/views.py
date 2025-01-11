@@ -24,6 +24,10 @@ def test_db_connection(request):
         return JsonResponse({"status": "error", "message": str(e)}, status=500)
 
 
+def test_django(request):
+    return JsonResponse({"status":"success"})
+
+
 class LoginView(APIView):
     def post(self, request: Request):
         email = request.data.get('email')
