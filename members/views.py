@@ -8,9 +8,20 @@ from .token import create_jwt_pair_for_users
 from .serializers import SignUpSerializer, UserSerializer
 from .models import User
 from rest_framework import generics, permissions
-
+from django.http import JsonResponse
+from django.db import connection
 
 logger = logging.getLogger(__name__)
+
+
+def test_db_connection(request):
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT 1")  # Simple query to check connection
+            result = cursor.fetchone()
+        return JsonResponse({"status": "success", "result": result})
+    except Exception as e:
+        return JsonResponse({"status": "error", "message": str(e)}, status=500)
 
 
 class LoginView(APIView):
