@@ -30,7 +30,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = config('DEBUG') or True
 
 ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1', '.onrender.com', '0.0.0.0', 'localhost']
 
@@ -120,7 +120,6 @@ DATABASES = {
         'PASSWORD': config('DB_PASSWORD'),
         'HOST': config('DB_HOST'),
         'PORT': config('DB_PORT', default='3306'),
-        'CONN_MAX_AGE': 600
     }
 }
 
