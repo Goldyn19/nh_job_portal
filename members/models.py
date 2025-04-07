@@ -35,7 +35,7 @@ class User(AbstractUser):
     last_name = models.CharField(null=True, blank=True, max_length=45)
     profile_picture = models.URLField(null=True, blank=True,)
     user_type = models.CharField(max_length=15, choices=USER_TYPE_OPTION)
-    contact = models.CharField(max_length=25)
+    contact = models.CharField(max_length=25, null=True, blank=True)
     bio = models.TextField(null=True, blank=True,)
     company_name = models.CharField(null=True, blank=True, max_length=70)
     company_website = models.URLField(null=True, blank=True)
